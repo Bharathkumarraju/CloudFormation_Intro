@@ -1,3 +1,18 @@
+Parameters:
+   NameOfService:
+     Description: "The name of the service this stack is used for"
+     Type: String  
+   KeyName:
+      Description: Name of keypair to enable ssh access to an EC2 instance
+      Type: AWS::EC2::KeyPair::KeyName
+   InstTypeParam:
+      Description: WHich Type of instance you gonna select 
+      Type: String
+      Default: t2.micro
+      AllowedValues:
+        - t2.micro
+        - m1.small
+        - m1.large
 Mappings:
   bharathRegionMap:
     us-east-1:
@@ -14,7 +29,7 @@ Resources:
   BKREc2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
-      InstanceType: t2.micro
+      InstanceType: !Ref InstTypeParam
       ImageId: 
         Fn::FindInMap:
           - bharathRegionMap
@@ -31,6 +46,10 @@ Resources:
             - "bharath"
             - "In the AWS Region Called"
             - !Ref AWS::Region
+       - Key: BharathName
+         Value: !Ref NameOfService
+                 
+      KeyName: !Ref KeyName
       SecurityGroups: 
        - !Ref BKRSecurityGROUP
   BKRSecurityGROUP:
