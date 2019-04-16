@@ -1,9 +1,25 @@
+Mappings:
+  bharathRegionMap:
+    us-east-1:
+      AMI: ami-1853ac65
+    us-west-1:
+      AMI: ami-bf5540df
+    eu-west-1:
+      AMI: ami-3bfab942
+    ap-southeast-1:
+      AMI: ami-e2adf99e
+    ap-southeast-2:
+      AMI: ami-43874721
 Resources:
   BKREc2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: t2.micro
-      ImageId: ami-467ca739
+      ImageId: 
+        Fn::FindInMap:
+          - bharathRegionMap
+          - !Ref AWS::Region
+          - AMI
       Tags:
        - Key: Name   
          Value: !Join 
