@@ -4,3 +4,7 @@ Resources:
     Properties:
       InstanceType: t2.micro
       ImageId: ami-467ca739
+      Tags:
+       - Key: Name   
+         Value: A simple example
+         
