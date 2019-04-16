@@ -13,6 +13,8 @@ Resources:
             - "launched"
             - " by"
             - "bharath"
+            - "In the AWS Region Called"
+            - !Ref AWS::Region
       SecurityGroups: 
        - !Ref BKRSecurityGROUP
   BKRSecurityGROUP:
