@@ -1,6 +1,10 @@
-Resources:
-  Ec2Instance:
-    Type: 'AWS::EC2::Instance'
-    Properties:
-      InstanceType: t2.micro
-      ImageId: ami-467ca39
+Resources: 
+  BharthsEc2Instance:
+   Type: 'AWS::EC2::Instance'
+   Properties:
+    InstanceType: t2.micro
+    ImageId: ami-467ca739
+    Tags: 
+    - Key: Name
+      Value: A simple example
+     

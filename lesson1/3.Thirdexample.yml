@@ -1,0 +1,8 @@
+Resources: 
+  BharthsS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+     BucketName: helloworldwebsite4bharath
+     AccessControl: PublicRead
+     WebsiteConfiguration:
+      IndexDocument: index.html
