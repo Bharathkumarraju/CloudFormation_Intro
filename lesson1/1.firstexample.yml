@@ -37,8 +37,8 @@ Resources:
               php: []
           files:
              /var/www/html/index.php:
-               content: !Sub |
-               <?php print "Hello World Bharath is here!"; ?>
+                content: !Sub |
+                    <?php print "Hello World Bharath is here!"; ?>
           services: 
             sysvinit:
               httpd:
@@ -59,7 +59,7 @@ Resources:
               # Ensure that AWS CFN bootstrap is the latest
               yum install -y aws-cfn-bootstrap
               # Install the files and packages from the metadata
-              /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource BKREc2Instance --region ${AWS::region}
+              /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource BKREc2Instance --region ${AWS::Region}
       Tags:
        - Key: Name   
          Value: !Join 
