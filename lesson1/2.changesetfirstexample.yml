@@ -13,6 +13,13 @@ Parameters:
         - t2.micro
         - m1.small
         - m1.large
+   VpcID:
+      Description: Enter the VPC ID
+      Type: AWS::EC2::VPC::Id 
+#   SubnetID:
+#      Description: Enter the Subner ID 
+#      Type: AWS::EC2::Subnet::Id 
+
 Mappings:
   bharathRegionMap:
     us-east-1:
@@ -52,6 +59,7 @@ Resources:
           - bharathRegionMap
           - !Ref AWS::Region
           - AMI
+#      SubnetId: !Ref SubnetID
       UserData: 
         'Fn::Base64':
            !Sub |
@@ -72,15 +80,16 @@ Resources:
             - "In the AWS Region Called"
             - !Ref AWS::Region
        - Key: BharathName
-         Value: !Ref NameOfService
-                 
+         Value: !Ref NameOfService                
       KeyName: !Ref KeyName
       SecurityGroups: 
        - !Ref BKRSecurityGROUP
+
   BKRSecurityGROUP:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       GroupDescription: Allow http website port 80
+      VpcId: !Ref VpcID
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: '80'
