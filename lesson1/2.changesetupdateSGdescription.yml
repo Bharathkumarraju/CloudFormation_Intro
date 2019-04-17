@@ -67,7 +67,7 @@ Resources:
   MySecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Open Port 80 for website
+      GroupDescription: Open Ports 22 and 80
       VpcId: !Ref VpcId
       SecurityGroupIngress:
       - IpProtocol: tcp
